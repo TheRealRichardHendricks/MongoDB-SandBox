@@ -64,6 +64,17 @@ db.posts
 	.sort({ title: -1 })
 	.limit(5);
 
+// PAGING (1st way)
+db.posts.find().limit(10);					// page 1
+db.posts.find().skip(10).limit(10);				// page 2
+db.posts.find().skip(20).limit(10);				// page 3
+db.posts.find().skip(pageSize * (n - 1)).limit(pageSize);	// generaly
+
+// PAGING (2nd way)
+db.posts.find({'_id'} > last_id).sort({ title: 1 }).limit(pageSize);
+last_id = ...
+
+
 // loop through query results
 db.posts.find().forEach(doc => print(`Blog Post: ${doc.title}`));
 db.posts.find().forEach(function(doc) {
