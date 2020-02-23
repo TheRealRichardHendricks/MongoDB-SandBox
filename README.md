@@ -1,3 +1,3 @@
 # MongoDB SandBox
 
-mongo db rep
+mongo db repo
